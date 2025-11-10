@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InventoryUpdated",
+  "type": "object",
+  "required": [
+    "orderId",
+    "items",
+    "updatedAt"
+  ],
+  "properties": {
+    "orderId": {
+      "type": "integer"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "productId",
+          "deltaQuantity",
+          "newQuantity"
+        ],
+        "properties": {
+          "productId": {
+            "type": "integer"
+          },
+          "deltaQuantity": {
+            "type": "integer"
+          },
+          "newQuantity": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
