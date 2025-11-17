@@ -8,4 +8,24 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>commons</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.suresh.ecommerce</groupId>
+            <artifactId>api-spec</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- Disable Spring Boot repackage for commons -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

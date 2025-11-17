@@ -2,15 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+    <!-- Make this POM an aggregator/parent POM for the multi-module project -->
+    <packaging>pom</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.suresh.ecommerce</groupId>
-	<artifactId>product-order-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+ 	<groupId>com.suresh.ecommerce</groupId>
+ 	<artifactId>product-order-service</artifactId>
+ 	<version>0.0.1-SNAPSHOT</version>
+
+    <!-- List child modules so IDEs and Maven treat this as a multi-module project -->
+    <modules>
+        <module>commons</module>
+        <module>product-service</module>
+        <module>order-service</module>
+        <module>payment-service</module>
+        <module>app</module>
+        <module>api-spec</module>
+    </modules>
 	<name>Product and Order Service</name>
 	<description>Spring Boot microservice for managing products and orders in an e-commerce system.</description>
 	<url/>
@@ -49,10 +61,11 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.38</version>
+
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,11 +84,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
 				<configuration>
+					<!-- Use project java.version for source/target to keep IDE and build consistent -->
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+                            <version>1.18.36</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
