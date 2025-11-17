@@ -1,4 +1,4 @@
-package com.suresh.ecommerce.product_order_service;
+package com.suresh.ecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
