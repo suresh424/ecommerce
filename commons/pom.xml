@@ -17,7 +17,6 @@
     </dependencies>
     <build>
         <plugins>
-            <!-- Disable Spring Boot repackage for commons -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
