@@ -29,6 +29,11 @@
         </dependency>
         <dependency>
             <groupId>com.suresh.ecommerce</groupId>
+            <artifactId>order-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.suresh.ecommerce</groupId>
             <artifactId>commons</artifactId>
             <version>${project.version}</version>
         </dependency>

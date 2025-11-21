@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.suresh.ecommerce.payment.grpc";
+option java_outer_classname = "PaymentProto";
+
+package payment;
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNKNOWN = 0;
+  PAYMENT_STATUS_AUTHORIZED = 1;
+  PAYMENT_STATUS_DECLINED = 2;
+}
+
+message PaymentAuthorizationRequest {
+  int64 orderId = 1;
+  double amount = 2;
+  string currency = 3;
+}
+
+message PaymentAuthorizationResponse {
+  string transactionId = 1;
+  PaymentStatus status = 2;
+  string failureReason = 3;
+}
+
+message PaymentStatusRequest {
+  string transactionId = 1;
+}
+
+message PaymentStatusResponse {
+  PaymentStatus status = 1;
+  string failureReason = 2;
+}
+
+service PaymentService {
+  rpc AuthorizePayment(PaymentAuthorizationRequest) returns (PaymentAuthorizationResponse);
+  rpc GetPaymentStatus(PaymentStatusRequest) returns (PaymentStatusResponse);
+}
